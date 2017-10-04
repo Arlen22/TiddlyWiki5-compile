@@ -61,6 +61,11 @@ function complete() {
             fs.writeFileSync(path.join(newPath, "plugin.info"), JSON.stringify(plugin)); 
         }
         else console.log(oldpath);
+    }, x => console.error(x), () => {
+        console.log("To compile a complete working copy of TiddlyWiki, you also need to include the "
+        + "'licenses' and 'boot' folders. The root files may also be required, depending on the intended usage. " 
+        + "The bin and editions folders are not required for TiddlyWiki to function, they only provide additional "
+        + "convenience functions.");
     })
 }
 
