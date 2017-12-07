@@ -19,7 +19,8 @@ function obs_mkdir(tag) {
 
 var $tw = require("tiddlywiki").TiddlyWiki();
 
-const TWSource = 'TiddlyWiki5-54b1e284fa323968b6d8e49ad5c2344627d8ce3b';
+// const TWSource = 'TiddlyWiki5-54b1e284fa323968b6d8e49ad5c2344627d8ce3b';
+const TWSource = 'TiddlyWiki5-5.1.14';
 const oldFolder = path.join(__dirname, TWSource);
 const newFolder = path.join(__dirname, TWSource + "-Compiled");
 fs.mkdirSync(newFolder);
@@ -38,15 +39,11 @@ function complete() {
         return obs_readdir(fullpath)(fullpath);
     }).concatMap(([err, files, folder]) => {
         //read the author folders
-        return Observable.from(files).map(author => {
-            return path.join(folder, author);
-        })
+        return Observable.from(files).map(author => path.join(folder, author))
     }).startWith(path.join(__dirname, TWSource, 'languages')).concatMap(fullpath => {
         return obs_readdir(fullpath)(fullpath);
     }).concatMap(([err, files, folder]) => {
-        return Observable.from(files).map(plugin => {
-            return path.join(folder, plugin);
-        })
+        return Observable.from(files).map(plugin => path.join(folder, plugin))
     }).startWith(path.join(__dirname, TWSource, 'core')).concatMap(fullpath => {
         return $tw.loadPluginFolder(fullpath).map(a => [a, fullpath]);
     }).subscribe(([plugin, oldpath]) => {

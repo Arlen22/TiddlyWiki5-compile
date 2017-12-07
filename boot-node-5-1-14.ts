@@ -7,7 +7,7 @@ import * as fs from 'fs';
 // }
 
 const maxConcurrent = 40;
-// The source repository for this file is https://github.com/Arlen22/TiddlyWiki5-compile
+// The master of this file is in the src folder in https://github.com/Arlen22/TiddlyServer 
 // written targetting v5.1.14
 // checked against v5.1.14...v5.1.15
 //   https://github.com/Jermolene/TiddlyWiki5/compare/v5.1.14...54b1e284fa323968b6d8e49ad5c2344627d8ce3b
